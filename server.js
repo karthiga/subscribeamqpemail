@@ -11,7 +11,7 @@ var url = config.rabbitmq.amqpurl; // default to localhost
 var open = amqpLib.connect(url);
 
 open.then(function(conn) {
-  var ok = conn.createChannel();
+  var ok = conn.createChannel(); 
   ok = ok.then(function(ch) {
     ch.assertQueue(config.rabbitmq.queue+'');
     ch.bindQueue(config.rabbitmq.queue,config.rabbitmq.exchange,'Dummy');
