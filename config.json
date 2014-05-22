@@ -1,0 +1,16 @@
+{
+    "webserver" : {
+        "port" : "3000",
+        "ip" : "127.0.0.1"
+    },
+    "mailgun" : {
+         "api_key" : "key-403x8je0ahqij7jjds15up26q-too495",
+         "domain" : "sandboxe37ffd9c24e24d0fabef832fdedaf883.mailgun.org",
+         "default_from" : "vmokshalab@sandboxe37ffd9c24e24d0fabef832fdedaf883.mailgun.org"
+    },
+    "rabbitmq" : {
+         "amqpurl" : "amqp://lrjbugeu:-WojumRybag34eHpqFC2bhTLbBILgCun@turtle.rmq.cloudamqp.com/lrjbugeu",
+         "queue" : "SendNotificationQueue",
+         "exchange" : "SendNotificationExchange";
+    }
+}
