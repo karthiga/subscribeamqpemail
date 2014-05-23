@@ -11,6 +11,7 @@
     "rabbitmq" : {
          "amqpurl" : "amqp://lrjbugeu:-WojumRybag34eHpqFC2bhTLbBILgCun@turtle.rmq.cloudamqp.com/lrjbugeu",
          "queue" : "SendEmailNotifyQueue",
-         "exchange" : "SendEmailNotifyExchange"
+         "exchange" : "SendEmailNotifyExchange",
+         "routingkey" :"dummmy"
     }
 }
