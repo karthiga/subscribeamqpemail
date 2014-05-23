@@ -23,15 +23,15 @@ open.then(function(conn) {
           //Instantiate Mailgun
     var mailgun = new Mailgun({apiKey: config.mailgun.api_key, domain: config.mailgun.domain});
     var from = config.mailgun.default_from;
-    if(requestObj.From !== null && requestObj.From !== "" && requestObj.From !== undefined){
-        from = requestObj.From
+    if(requestObj.FromEmail !== null && requestObj.FromEmail !== "" && requestObj.FromEmail !== undefined){
+        from = requestObj.FromEmail
     }
     //Create Mail Message
     var data = {
       from: from,
-      to: requestObj.To,
+      to: requestObj.ToEmail,
       subject: requestObj.Subject,
-      text: requestObj.Message
+      text: requestObj.Body
     };
      //Send Mail Message
     try{
