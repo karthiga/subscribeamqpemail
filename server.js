@@ -1,5 +1,6 @@
 var amqpLib = require('amqplib'),
     fs = require('fs'),
+    express = require('express'),
     Mailgun = require('mailgun-js');
 
 //read config.json file and parse json data
@@ -9,6 +10,26 @@ var config = JSON.parse (fs.readFileSync(filename,'utf8'));
 var url = config.rabbitmq.amqpurl; // default to localhost
 
 var open = amqpLib.connect(url);
+
+var app = express();
+console.log("process.env.PORT=" + process.env.PORT)
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+
+  // intercept OPTIONS method
+  if ('OPTIONS' === req.method) { res.send(200); }
+  else { next(); }
+};
+
+app.configure(function () {
+    app.use(express.logger('dev'));     /* 'default', 'short', 'tiny', 'dev' */
+     app.use(allowCrossDomain);
+    app.use(express.bodyParser());
+});
+
+app.listen(process.env.PORT || 2455);
 
 open.then(function(conn) {
   var ok = conn.createChannel();
