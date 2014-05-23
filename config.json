@@ -10,7 +10,7 @@
     },
     "rabbitmq" : {
          "amqpurl" : "amqp://lrjbugeu:-WojumRybag34eHpqFC2bhTLbBILgCun@turtle.rmq.cloudamqp.com/lrjbugeu",
-         "queue" : "SendNotificationQueue",
-         "exchange" : "SendNotificationExchange"
+         "queue" : "EmailNotificationRabbitMQQueue",
+         "exchange" : "EmailNotificationRabbitMQExchange"
     }
 }
