@@ -11,11 +11,13 @@ var url = config.rabbitmq.amqpurl; // default to localhost
 var open = amqpLib.connect(url);
 
 open.then(function(conn) {
-  var ok = conn.createChannel(); 
+  var ok = conn.createChannel();
   ok = ok.then(function(ch) {
+      console.log("rabbitMQ connected");
     ch.assertQueue(config.rabbitmq.queue+'');
     ch.bindQueue(config.rabbitmq.queue,config.rabbitmq.exchange,'Dummy');
     ch.consume(config.rabbitmq.queue, function(msg) {
+        console.log("Start consuming message from rabbitMQ Queue");
       if (msg !== null) {
         console.log(msg.content.toString());
         ch.ack(msg);
@@ -24,6 +26,7 @@ open.then(function(conn) {
     var mailgun = new Mailgun({apiKey: config.mailgun.api_key, domain: config.mailgun.domain});
     var from = config.mailgun.default_from;
     if(requestObj.FromEmail !== null && requestObj.FromEmail !== "" && requestObj.FromEmail !== undefined){
+        console.log("Checked for FromEmail parameter");
         from = requestObj.FromEmail
     }
     //Create Mail Message
@@ -33,8 +36,12 @@ open.then(function(conn) {
       subject: requestObj.Subject,
       text: requestObj.Body
     };
+    
+    console.log("Got the message to be sent as mail");
+    
      //Send Mail Message
     try{
+            console.log("Try Sending mail");
             mailgun.messages().send(data, function (error, body) {
             if(error !== undefined){
                 console.log('Exception while sending mail...'+ error.message);
