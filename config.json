@@ -5,7 +5,7 @@
     },
     "mailgun" : {
          "api_key" : "key-9otv2b--nb3ho7x9it6ewzbvlt5shpu4",
-         "domain" : "smtp.mailgun.org",
+         "domain" : "app0b47aef7947d444f9982fcbd0479daab.mailgun.org",
          "default_from" : "postmaster@app0b47aef7947d444f9982fcbd0479daab.mailgun.org"
     },
     "rabbitmq" : {
