@@ -9,7 +9,7 @@ var config = JSON.parse (fs.readFileSync(filename,'utf8'));
 
 var url = config.rabbitmq.amqpurl; // default to localhost
 
-var open = amqpLib.connect(url);
+var open = amqpLib.connect(url); 
 
 var app = express();
 console.log("process.env.PORT=" + process.env.PORT)
